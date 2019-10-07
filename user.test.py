@@ -1,6 +1,7 @@
 import unittest
 from user import User
 from user import Credentials
+import pyperclip
 
 class TestUser(unittest.TestCase):
 
@@ -45,7 +46,7 @@ class TestCredentials(unittest.TestCase):
          the credentials list
         '''
         self.new_credentials.store_credentials() # saving the new credentials
-        self.assertEqual(len(Credentials.credentials_list),1)
+        self.assertEqual(len(Credentials.credentials_list),2)
 
     def test_display_all_credentials(self):
             '''
@@ -56,14 +57,24 @@ class TestCredentials(unittest.TestCase):
 
     def test_delete_credentials(self):
             '''
-            test_delete_credentials to test if we can remove a credentials from our credentials list
+            test_delete_credentials to test if we can remove a credential tat is not in from the credentials list
             '''
             self.new_credentials.store_credentials()
             test_credentials = Credentials("instagram","##@@collins1") # new credential
             test_credentials.store_credentials()
 
-            self.new_credentials.test_delete_credentials()# Deleting a credentials object
-            self.assertEqual(len(Credentials.credentials_list),3)
+            self.new_credentials.delete_credentials()# Deleting a credential object
+            self.assertEqual(len(Credentials.credentials_list),1)
+
+    def test_copy_credentials(self):
+        '''
+        Test to confirm that we are copying the credentials to the clipboard
+        '''
+
+        self.new_credentials.store_contact()
+        Credentials.test_copy_credentials("instagram")
+
+        self.assertEqual(self.new_credentials.credentials,pyperclip.paste())            
 
 if __name__ ==  '__main__':
     unittest.main()        
