@@ -1,4 +1,4 @@
-import pyperclip
+# import pyperclip
 
 class User:
     """
@@ -13,6 +13,12 @@ class User:
       """
       self.username = username
       self.password = password
+
+    def save_user(self):
+      '''
+      save_user method saves user objects
+      '''
+      User.user_list.append(self)
 
 class Credentials:
     """
@@ -46,4 +52,9 @@ class Credentials:
         '''
         method that returns the credentials list
         '''
-        return cls.credentials_list      
+        return cls.credentials_list
+
+    # @classmethod
+    # def copy_credentials(cls,Credentials):
+    #     credentials_found = Credentials.find_by_credentials(credentials)
+    #     pyperclip.copy(credentials_found.credentials)        
