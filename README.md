@@ -13,8 +13,8 @@ The project was created using;
 ### Setup
 
 * To run the project in your terminal;
-       *  $ cd ../password-locker
-       * $ run.py 
+       - $ cd ../password-locker
+       - $ run.py 
 
 * To clone the project,git clone https://github.com/collinsbett29/password-locker.git
 
