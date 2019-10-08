@@ -39,12 +39,12 @@ def main():
     print("Register")
     print('\n')
 
+    print("Enter you username and password to register")
     print("username")
     username = input()
 
     print("password")
     password = input()
-
 
 
     while True:
@@ -97,7 +97,7 @@ def main():
                                     print("That credential does not exist")
 
                     elif short_code == "ex":
-                            print("Bye .......")
+                            print("Bye")
                             break
                     else:
                             print("I really didn't get that. Please use the short codes")
