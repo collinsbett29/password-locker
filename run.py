@@ -10,95 +10,123 @@ def generate_temp_password(length):
     from os import urandom
     return "".join(chars[ord(c) % len(chars)] for c in urandom(length))
 
-def create_credentials(Credentials,password):
+def register_account(user_name,password):
+    '''
+    Function allow user create an account
+    '''
+    new_user = Credentials(user_name,password)
+    return new_user
+
+def Login(Username,password):
+    '''
+    Function to allow user login
+    '''
+    new_credential = Credentials(Credentials,password)
+    return new_credential
+
+def create_credentials(credential,password):
     '''
     Function to create a new credential
     '''
-    new_credentials = Credentials(Credentials,password)
-    return new_credentials
+    new_credential = Credentials(credential,password)
+    return new_credential   
 
-def store_credentials(redentials):
+def display_credentials():
+    '''
+    Function that diplays credentials
+    '''
+    return Credentials.display_credentials()    
+
+def save_credentials(credentials,password):
     '''
     Function to store credentials
     '''
-    Credentials.store_credentials() 
+    new_credential = Credentials(credential,password)
+    return new_credential   
+
+    Credentials.save_credentials() 
 
 def del_credentials(Credentials):
-    '''
-    Function to delete a credential
-    '''
-    Credentials.delete_credentials() 
-
-def display_credentials():
     '''
     Function that returns all the stored credentials
     '''
     return Credentials.display_credentials()  
 
 def main():
-    print("Enter you username to register")
-            user_name = input()
-            password = input()
+        """
+        main function
+        """
+        my_id=0
+        entries = []
+        print("\n")
+        print("Register")
+        print("-",*40)
+while True:
+        print("Enter:\n R to Register\n Lg to login\n cc to create credential\n dc to display credentials\n fc to find a credential\n ex to exit the credential list ")
 
-            print(f"Hello {user_name}. what would you like to do?")
-            print('\n')
-            
-        while True:
-                print("Use these short codes : login - to login, cc - create a new credential, dc - display credentials, fc -find a credential, ex -exit the credential list ")
+        short_code = input().lower().strip()
 
-                short_code = input().lower()
+        if short_code == 'R':
+                print("Register to continue:"+"\n"+"-"+"\nUsername")
+                user_name = input("Your username:")
+                print("Password:")
+                my_password = input("Password: ")
 
-                if short_code == 'login':
-                        print("Username")
-                        print(user_name)
-
-                if short_code == 'cc':
-                        print("New credential")
-
-                        print (Username)
-                        username = input()
-
-                        print(Password)
-                        password = input()
-
-
-                        save_credentials(create_credentials(Credentials,password)) # create and save new credential.
-                        print ('\n')
-                        print(f"New Credential created")
-                        print ('\n')
-
-                elif short_code == 'dc':
-                        if display_credentials():
-                                print("Here are all your credentials")
-                                print('\n')
-
-                                for credentials in display_credentials():
-                                        print(f"{credentials.credentials} {credentials.password}")
-
-                                print('\n')
-                        else:
-                                print('\n')
-                                print("Your credentials list is empty")
-                                print('\n')
+                print("\n")
+                create_user(new_account(user_name,user_password,))
+                print(f"{user_name} your account has been created successfuly.\nLogin to continue")
+                entries.append(0)
+                print("-",*30)
 
 
-                elif short_code == 'fc':
+        if short_code == 'cc':
+                print("New credential")
 
-                        print("Search the credential")
+                print (credential)
+                username = input()
 
-                        search_credentials = input()
-                        if check_existing_credentials(search_credentials):
-                                search_credentials = find_credentials(search_credentials)
-                                print(f"{search_credentials.username}")
-                                print('-' * 20)
+                print(Password)
+                password = input()
 
-                                print(f"username.......{search_credentials}")
-                        else:
-                                print("That credential does not exist")
 
-                elif short_code == "ex":
-                        print("Bye")
-                        break
+                save_credentials(create_credentials(Credentials,password)) # create and save new credential.
+                print ('\n')
+                print(f"New Credential created")
+                print ('\n')
+
+
+        elif short_code == 'dc':
+                if display_credentials():
+                        print("Here are all your credentials")
+                        print('\n')
+
+                        for credentials in display_credentials():
+                                print(f"{credentials.credentials} {credentials.password}")
+
+                        print('\n')
                 else:
-                        print("I really didn't get that. Please use the short codes")
+                        print('\n')
+                        print("Your credentials list is empty")
+                        print('\n')
+
+
+        elif short_code == 'fc':
+
+                print("Search the credential")
+
+                search_credentials = input()
+                if check_existing_credentials(search_credentials):
+                        search_credentials = find_credentials(search_credentials)
+                        print(f"{search_credentials.username}")
+                        print('-' *20)
+
+                        print(f"username.......{search_credentials}")
+                else:
+                        print("That credential does not exist")
+
+        elif short_code == "ex":
+                print("Bye")
+                break
+        else:
+                print("I really didn't get that. Please use the short codes")
 
