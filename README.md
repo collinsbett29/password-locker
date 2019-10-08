@@ -11,9 +11,11 @@ The project was created using;
     * Python3.6
 
 ### Setup
+
 * To run the project in your terminal;
-       * $ cd ../password-locker
-       * $ run.py
+       *  $ cd ../password-locker
+       * $ run.py 
+
 * To clone the project,git clone https://github.com/collinsbett29/password-locker.git
 
        The project is licensed by MIT license
