@@ -11,10 +11,10 @@ The project was created using;
     * Python3.6
 
 ### Setup
-*To run the project;
+* To run the project;
        $ cd ../password-locker
        $ run.py
-*To clone the project,git clone https://github.com/collinsbett29/password-locker.git
+* To clone the project,git clone https://github.com/collinsbett29/password-locker.git
 
        The project is licensed by MIT license
           ©️Collins K. Bett 2019  
