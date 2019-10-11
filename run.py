@@ -2,14 +2,6 @@
 from user import User
 from user import Credentials
 
-def generate_temp_password(length):
-    if not isinstance(length, int) or length < 8:
-        raise ValueError("temp password must have positive length")
-
-    chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
-    from os import urandom
-    return "".join(chars[ord(c) % len(chars)] for c in urandom(length))
-
 def register_account(user_name,password):
     '''
     Function allow user create an account
@@ -41,28 +33,35 @@ def save_credentials(credentials,password):
     '''
     Function to store credentials
     '''
-    new_credential = Credentials(credential,password)
+    new_credential = Credentials(credentials,password)
     return new_credential   
 
     Credentials.save_credentials() 
 
-def del_credentials(Credentials):
+def delete_credentials(self):
     '''
-    Function that returns all the stored credentials
+    Function that deletes credentials
     '''
-    return Credentials.display_credentials()  
+    return Credentials.delete_credentials()    
 
 def main():
         """
         main function
         """
+
+        print("Hello Welcome to Password lock. What is your name?")
+        user_name = input()
+
+        print(f"Hello {user_name}. what would you like to do?")
+        print('\n')
+
         my_id=0
         entries = []
         print("\n")
         print("Register")
         print("-",*40)
 while True:
-        print("Enter:\n R to Register\n Lg to login\n cc to create credential\n dc to display credentials\n fc to find a credential\n ex to exit the credential list ")
+        print("Enter:\n R to Register\n Lg to login\n cc to create credential\n vw to view credentials\n fc to find a credential\n dl to delete\n ex to exit the credential list ")
 
         short_code = input().lower().strip()
 
@@ -95,7 +94,7 @@ while True:
                 print ('\n')
 
 
-        elif short_code == 'dc':
+        elif short_code == 'vw':
                 if display_credentials():
                         print("Here are all your credentials")
                         print('\n')
@@ -123,6 +122,21 @@ while True:
                         print(f"username.......{search_credentials}")
                 else:
                         print("That credential does not exist")
+
+        elif short_code == 'dl':
+                if delete_credentials():
+                        print("Here are all your credentials")
+                        print('\n')
+
+                        for credentials in display_credentials():
+                                print(f"{credentials.credentials} {credentials.password}")
+
+                        print('\n')
+                else:
+                        print('\n')
+                        print("Your credential has been deleted successfully")
+                        print('\n')
+
 
         elif short_code == "ex":
                 print("Bye")
