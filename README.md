@@ -8,7 +8,7 @@ This is an application that allows one lock his/her password by simply registeri
 
 ### Technologies used
 The project was created using;
-    * Python3.6
+* Python3.6
 
 ### Setup
 
