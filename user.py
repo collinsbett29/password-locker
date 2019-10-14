@@ -14,6 +14,14 @@ class User:
       self.username = username
       self.password = password
 
+    def delete_user(self):
+      '''
+      delete_credentials method deletes a credential that is no longer needed from the contact_list
+      '''
+
+      User.user_list.remove(self)      
+
+
     def save_user(self):
       '''
       save_user method saves user objects
